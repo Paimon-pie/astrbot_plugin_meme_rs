@@ -7,10 +7,12 @@
 ## 安装方式
 
 1. 自行部署并启动 `meme-generator-rs` HTTP 服务（本地或云端均可，默认地址 `http://127.0.0.1:2255`）。
-2. 在 AstrBot 插件管理中通过本仓库地址安装，或将整个 `astrbot_plugin_meme_rs` 文件夹放到：
-   ```text
-   <AstrBot目录>/data/plugins/astrbot_plugin_meme_rs
-   ```
+2. 任选一种方式安装插件：
+   - **WebUI 安装（推荐）**：在 AstrBot 插件管理中粘贴本仓库地址 `https://github.com/Paimon-pie/astrbot_plugin_meme_rs` 直接安装。
+   - **Git 克隆安装**：进入 `<AstrBot目录>/data/plugins` 后执行：
+     ```bash
+     git clone https://github.com/Paimon-pie/astrbot_plugin_meme_rs.git
+     ```
 3. 重载插件后，在插件配置中填写你的 `base_url` 即可使用。
 
 ## 主要功能
