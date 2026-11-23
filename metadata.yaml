@@ -1,0 +1,6 @@
+name: astrbot_plugin_meme_rs
+display_name: 表情包制作 (meme-generator-rs)
+desc: 接入本地或远程 meme-generator-rs HTTP 服务的 AstrBot 表情包制作插件，适配 QQ 官方机器人
+version: 1.0.0
+author: Paimon-pie
+repo: https://github.com/Paimon-pie/astrbot_plugin_meme_rs

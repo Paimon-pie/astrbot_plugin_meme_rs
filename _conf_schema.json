@@ -1,0 +1,115 @@
+{
+  "base_url": {
+    "description": "meme-generator-rs 服务地址",
+    "type": "string",
+    "default": "http://127.0.0.1:2255",
+    "hint": "meme-generator-rs HTTP 服务地址，支持本地（如 http://127.0.0.1:2255）或远程云端部署地址"
+  },
+  "timeout": {
+    "description": "请求超时时间（秒）",
+    "type": "int",
+    "default": 30,
+    "hint": "单次 HTTP 请求超时时间，生成复杂 GIF 可适当调大"
+  },
+  "retry": {
+    "description": "失败重试次数",
+    "type": "int",
+    "default": 2,
+    "hint": "遇到网络抖动或 5xx 时的自动重试次数"
+  },
+  "enable_meme": {
+    "description": "启用表情包制作",
+    "type": "bool",
+    "default": true,
+    "hint": "插件总开关"
+  },
+  "force_prefix": {
+    "description": "强制要求触发前缀",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后必须带前缀（如 #hello 或 /hello）才能触发表情制作，可彻底避免群聊误触发"
+  },
+  "prefixes": {
+    "description": "允许的触发前缀",
+    "type": "string",
+    "default": "#,/",
+    "hint": "英文逗号分隔，默认支持 # 和 / 前缀"
+  },
+  "enable_shortcuts": {
+    "description": "启用快捷与正则触发",
+    "type": "bool",
+    "default": true,
+    "hint": "启用 meme-generator-rs 服务端自带的 shortcuts 快捷与正则触发"
+  },
+  "use_base64_upload": {
+    "description": "使用 Base64 上传图片",
+    "type": "bool",
+    "default": true,
+    "hint": "推荐开启：由 AstrBot 下载图片后以 base64 上传到 meme-generator-rs，避免图片防盗链或跨机器路径不可达"
+  },
+  "reply_with_quote": {
+    "description": "回复时引用原消息",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后发送普通图片回复时会附带引用原消息。注意：QQ 官 Bot 的“带 +1 按钮消息”与“引用原消息”互斥，开启 +1 按钮时按钮消息不会携带引用（群聊/频道会自动改为 @发送者）"
+  },
+  "enable_plus_one_button": {
+    "description": "QQ 官 Bot 表情下方附带 +1 按钮",
+    "type": "bool",
+    "default": true,
+    "hint": "开启后在 QQ 官方机器人生成的表情同条消息下方附带 +1 按钮，点击可将触发该表情的指令填入输入框（需官 Bot 具备自定义按钮权限；失败会自动降级为普通图片）"
+  },
+  "plus_one_button_label": {
+    "description": "+1 按钮文字",
+    "type": "string",
+    "default": "+1",
+    "hint": "按钮展示文案，默认 +1（QQ 限制最多 10 个字）"
+  },
+  "plus_one_button_style": {
+    "description": "+1 按钮样式",
+    "type": "int",
+    "default": 0,
+    "options": [0, 1],
+    "hint": "QQ 官 Bot 按钮视觉样式：0=灰色线框，1=蓝色线框"
+  },
+  "plus_one_send_mode": {
+    "description": "官 Bot 按钮消息承载模式",
+    "type": "string",
+    "default": "auto",
+    "options": ["auto", "markdown", "media"],
+    "hint": "auto=优先用 Markdown + QQ 临时素材同气泡发图与按钮（发完即删临时素材不占额度），失败回退富媒体；markdown=仅 Markdown；media=仅 msg_type=7 富媒体"
+  },
+  "error_reply": {
+    "description": "失败时返回错误提示",
+    "type": "bool",
+    "default": true,
+    "hint": "参数不足、图片数量不对或服务异常时是否向聊天回复错误原因"
+  },
+  "blacklist_memes": {
+    "description": "禁用表情列表",
+    "type": "list",
+    "default": [],
+    "options": [],
+    "labels": [],
+    "subtitles": [],
+    "hint": "支持输入任意关键词或英文 key 实时搜索，点选后以标签形式添加，列表内的表情不会触发（需先连上一次 meme-generator-rs 同步表情库）"
+  },
+  "avatar_url_template": {
+    "description": "QQ 号头像地址模板（OneBot / 手动 @QQ号）",
+    "type": "string",
+    "default": "https://q1.qlogo.cn/g?b=qq&nk={user_id}&s=640",
+    "hint": "用于 OneBot 或手动输入 @QQ号（如 hello @10001）场景；QQ 官方机器人会自动使用下方 OpenID 头像规则"
+  },
+  "qq_official_appid": {
+    "description": "QQ 官 Bot AppID（留空自动读取）",
+    "type": "string",
+    "default": "",
+    "hint": "留空会自动从 AstrBot 已接入的 qq_official / qq_official_webhook 适配器读取 AppID，通常无需手动填写"
+  },
+  "qq_official_avatar_url_template": {
+    "description": "QQ 官 Bot OpenID 头像地址模板",
+    "type": "string",
+    "default": "https://q.qlogo.cn/qqapp/{appid}/{user_id}/640",
+    "hint": "QQ 官方机器人群聊/私聊使用 OpenID 获取头像，支持 {appid} 和 {user_id}（或 {openid}），请求失败时自动回退到 thirdqq.qlogo.cn 与 100 尺寸"
+  }
+}
